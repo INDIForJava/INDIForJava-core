@@ -60,8 +60,8 @@ configure(install.repositories.mavenInstaller) {
         url = 'https://github.com/INDIForJava/INDIForJava-core'
 
         scm {
-            connection = 'git@github.com:renatoathaydes/rawhttp.git'
-            developerConnection = 'git@github.com:renatoathaydes/rawhttp.git'
+            connection = 'git@github.com:INDIForJava/INDIForJava-core.git'
+            developerConnection = 'git@github.com:INDIForJava/INDIForJava-core.git'
             url = 'https://github.com/INDIForJava/INDIForJava-core'
         }
 
