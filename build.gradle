@@ -5,7 +5,10 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
+    maven {
+        url = "https://repo.maven.apache.org/maven2/"
+        allowInsecureProtocol = true
+    }
 }
 
 group = "org.indilib.i4j"
@@ -17,7 +20,7 @@ targetCompatibility = 1.8
 
 dependencies {
     api "org.slf4j:slf4j-api:1.7.32"
-    api "org.glassfish.tyrus:tyrus-client:2.0.0"
+    api "org.glassfish.tyrus:tyrus-client:2.0.1"
     implementation("com.thoughtworks.xstream:xstream:1.4.18")
 }
 
