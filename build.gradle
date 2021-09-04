@@ -1,33 +1,31 @@
-apply plugin: 'java-library'
-apply plugin: 'idea'
-apply plugin: 'maven'
+plugins {
+    id "java-library"
+    id "maven-publish"
+    id "idea"
+}
 
 repositories {
     mavenCentral()
 }
 
-test {
-    useJUnitPlatform()
-}
+group = "org.indilib.i4j"
+description = "INDIForJava-core"
+version = "2.0.1"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-group 'org.indilib.i4j'
-description = 'INDIForJava-core'
-version '2.0.1'
-
 dependencies {
-    api 'org.slf4j:slf4j-api:1.7.30'
-    api 'org.glassfish.tyrus:tyrus-client:2.0.0'
-    implementation('com.thoughtworks.xstream:xstream:1.4.15')
+    api "org.slf4j:slf4j-api:1.7.32"
+    api "org.glassfish.tyrus:tyrus-client:2.0.0"
+    implementation("com.thoughtworks.xstream:xstream:1.4.18")
 }
 
 jar {
     archivesBaseName = project.name
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
-        from 'META-INF/MANIFEST.MF'
+        from "META-INF/MANIFEST.MF"
     }
 }
 
@@ -47,6 +45,7 @@ task fatJar(type: Jar, dependsOn: classes) {
     classifier "sources"
     extension "jar"
     destinationDirectory = file("build/")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
@@ -56,33 +55,31 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-configure(install.repositories.mavenInstaller) {
-    pom.project {
-        inceptionYear = '2012'
-        name = project.name
-        packaging = 'jar'
-        description = project.description
-
-        url = 'https://github.com/INDIForJava/INDIForJava-core'
-
-        scm {
-            connection = 'git@github.com:INDIForJava/INDIForJava-core.git'
-            developerConnection = 'git@github.com:INDIForJava/INDIForJava-core.git'
-            url = 'https://github.com/INDIForJava/INDIForJava-core'
-        }
-
-        licenses {
-            license {
-                name = 'GNU Lesser General Public License'
-                url = 'https://www.gnu.org/licenses/lgpl-3.0.txt'
-            }
-        }
-
-        developers {
-            developer {
-                id = 'marcocipriani01'
-                name = 'Marco Cipriani'
-                email = 'marco.cipriani.01@gmail.com'
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            pom {
+                name = project.name
+                description = "INDIForJava is a set of libraries to implement clients and servers that follow the INDI protocol, designed to operate astronomical instrumentation."
+                url = "https://github.com/INDIForJava/INDIForJava-core"
+                licenses {
+                    license {
+                        name = "GNU Lesser General Public License"
+                        url = "https://www.gnu.org/licenses/lgpl-3.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "marcocipriani01"
+                        name = "Marco Cipriani"
+                        email = "marco.cipriani.01@gmail.com"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/INDIForJava/INDIForJava-core.git"
+                    developerConnection = "scm:git:ssh://github.com/INDIForJava/INDIForJava-core.git"
+                    url = "https://github.com/INDIForJava/INDIForJava-core"
+                }
             }
         }
     }
