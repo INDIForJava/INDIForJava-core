@@ -12,19 +12,18 @@ repositories {
     mavenCentral()
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
-
 dependencies {
     api("org.slf4j:slf4j-api:1.7.32")
     api("org.glassfish.tyrus:tyrus-client:2.0.1")
     implementation("com.thoughtworks.xstream:xstream:1.4.18")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 tasks.jar {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
         from("META-INF/MANIFEST.MF")
     }
