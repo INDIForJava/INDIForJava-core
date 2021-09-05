@@ -50,7 +50,9 @@ tasks {
 
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+
             pom {
                 name.set(project.name)
                 description.set("INDIForJava is a set of libraries to implement clients and servers that follow the INDI protocol, designed to operate astronomical instrumentation.")
