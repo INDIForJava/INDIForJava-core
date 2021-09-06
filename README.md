@@ -28,7 +28,7 @@ software.
 ## Where do I start?
 
 If you are interested in the project, you might want to check
-the [repository](https://github.com/INDIForJava/INDIForJava) available for the project. There you have all the necessary
+the [repository](https://github.com/INDIForJava/INDIForJava-core) available for the project. There you have all the necessary
 tools to begin developing you're own INDI Clients and Drivers: You'll find the source code for the library, the compiled
 libraries (in .jar format), all the Java Docs for the libraries and even some example files to start experimenting.
 
@@ -91,7 +91,7 @@ Feel free to report bugs in the [GitHub issue tracker](https://github.com/INDIFo
 ## License
 
 This library is licensed under the GNU Lesser General Public License v3.0. A copy of the license is available in
-the [GitHub repository](https://github.com/INDIForJava/INDIForJava/blob/main/LICENSE.md)
+the [GitHub repository](https://github.com/INDIForJava/INDIForJava-core/blob/main/LICENSE.md)
 
 ## Developed by
 
