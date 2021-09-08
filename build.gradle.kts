@@ -6,7 +6,7 @@ plugins {
 
 group = "org.indilib.i4j"
 description = "INDIForJava-core"
-version = "2.0.5"
+version = "2.1.0"
 
 repositories {
     mavenCentral()
@@ -15,12 +15,12 @@ repositories {
 dependencies {
     api("org.slf4j:slf4j-api:1.7.32")
     api("org.glassfish.tyrus:tyrus-client:2.0.1")
-    implementation("com.thoughtworks.xstream:xstream:1.4.18")
+    api("com.thoughtworks.xstream:xstream:1.4.18")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 tasks.jar {

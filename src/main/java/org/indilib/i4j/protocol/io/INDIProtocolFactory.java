@@ -179,7 +179,7 @@ public final class INDIProtocolFactory {
      * @return the resulting input stream
      */
     private static InputStream inputStreamWithRootTag(final InputStream in) {
-        Enumeration<InputStream> streamEnum = new Enumeration<InputStream>() {
+        Enumeration<InputStream> streamEnum = new Enumeration<>() {
 
             private final InputStream[] streams = {
                     new ByteArrayInputStream(OPEN_BYTES), in,

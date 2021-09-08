@@ -389,15 +389,7 @@ public class INDISexagesimalFormatter implements Serializable {
      * @return The padded <code>String</code>
      */
     private String padLeft(final String s, final int n) {
-        if (s.length() >= n) {
-            return s;
-        }
-        int nSpaces = n - s.length();
-        StringBuilder spacesBuffer = new StringBuilder(nSpaces);
-        for (int i = 0; i < nSpaces; i++) {
-            spacesBuffer.append(" ");
-        }
-        String spaces = spacesBuffer.toString();
-        return spaces + s;
+        if (s.length() >= n) return s;
+        return " ".repeat(n - s.length()) + s;
     }
 }
