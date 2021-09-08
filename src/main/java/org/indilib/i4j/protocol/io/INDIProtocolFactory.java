@@ -28,6 +28,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamDriver;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.StatefulWriter;
 import com.thoughtworks.xstream.io.xml.XppDriver;
+import com.thoughtworks.xstream.security.AnyTypePermission;
 import org.indilib.i4j.protocol.*;
 import org.indilib.i4j.protocol.api.INDIInputStream;
 import org.indilib.i4j.protocol.api.INDIOutputStream;
@@ -67,6 +68,43 @@ public final class INDIProtocolFactory {
      * static cache of the XSTREAM INDI protokol instance.
      */
     private static final XStream XSTREAM;
+    private static final Class<?>[] XSTREAM_CLASSES = {
+            DefBlob.class,
+            DefBlobVector.class,
+            DefElement.class,
+            DefLight.class,
+            DefLightVector.class,
+            DefNumber.class,
+            DefNumberVector.class,
+            DefSwitch.class,
+            DefSwitchVector.class,
+            DefText.class,
+            DefTextVector.class,
+            DefVector.class,
+            DelProperty.class,
+            EnableBLOB.class,
+            GetProperties.class,
+            INDIProtocol.class,
+            Message.class,
+            NewBlobVector.class,
+            NewLightVector.class,
+            NewNumberVector.class,
+            NewSwitchVector.class,
+            NewTextVector.class,
+            NewVector.class,
+            OneBlob.class,
+            OneElement.class,
+            OneLight.class,
+            OneNumber.class,
+            OneText.class,
+            OneSwitch.class,
+            SetBlobVector.class,
+            SetLightVector.class,
+            SetNumberVector.class,
+            SetSwitchVector.class,
+            SetTextVector.class,
+            SetVector.class
+    };
 
     static {
         STREAM_DRIVER = new XppDriver() {
@@ -76,43 +114,8 @@ public final class INDIProtocolFactory {
             }
         };
         XSTREAM = new XStream(STREAM_DRIVER);
-        XSTREAM.processAnnotations(new Class<?>[]{
-                DefBlob.class,
-                DefBlobVector.class,
-                DefElement.class,
-                DefLight.class,
-                DefLightVector.class,
-                DefNumber.class,
-                DefNumberVector.class,
-                DefSwitch.class,
-                DefSwitchVector.class,
-                DefText.class,
-                DefTextVector.class,
-                DefVector.class,
-                DelProperty.class,
-                EnableBLOB.class,
-                GetProperties.class,
-                INDIProtocol.class,
-                Message.class,
-                NewBlobVector.class,
-                NewLightVector.class,
-                NewNumberVector.class,
-                NewSwitchVector.class,
-                NewTextVector.class,
-                NewVector.class,
-                OneBlob.class,
-                OneElement.class,
-                OneLight.class,
-                OneNumber.class,
-                OneText.class,
-                OneSwitch.class,
-                SetBlobVector.class,
-                SetLightVector.class,
-                SetNumberVector.class,
-                SetSwitchVector.class,
-                SetTextVector.class,
-                SetVector.class
-        });
+        XSTREAM.processAnnotations(XSTREAM_CLASSES);
+        XSTREAM.allowTypes(XSTREAM_CLASSES);
     }
 
     /**
